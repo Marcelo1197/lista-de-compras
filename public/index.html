@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis compras</title>
+
+
+    <!-- CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- CSS Local --> 
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <!-- Meta tags principales -->
+    <meta name="description" content="Pagina sobre lista de compras">
+    <meta name="keywords" content="lista, compra, items">
+    <meta name="autor" content="Marcelo Sanchez">
+    <meta name="copyright" content="Marcelo Sanchez"> <!-- o Marcelo1197 -->
+
+    <!-- Meta robots -->
+    <meta name="robots" content="index nofollow">
+    
+    <!-- Fav icon -->
+    <link rel="icon" href="images/icono.svg" type="image/png">
+
+    <!-- Open Graph -->
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Lista de compras">
+    <meta property="og:description" content="Pagina mobile first para administrar lista de compras">
+    <meta property="og:image" content="images/facebookImage.png"> 
+    <meta property="og:url" content="https://mistareas-b40ae.web.app/"> 
+    <meta property="og:site_name" content="Lista de compras">
+
+    <!-- Twitter Cards -->
+
+    <meta name="twitter:title" content="Lista de compras">
+    <meta name="twitter:description" content="Pagina mobile first de Lista de Compras">
+    <meta name="twitter:image" content="https://i.imgur.com/zPgnDvV.png"> 
+    <meta name="twitter:site" content="https://mistareas-b40ae.web.app/"> 
+    <meta name="twitter:creator" content="@ChelooSanchez">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image:alt" content="Imagen de una lista y un lapiz">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/logo.svg" alt="lista de compras con un lapiz" class="header__logo"></a>
+        <h1>Mis compras</h1>
+    </header>
+
+    <section class="desktopForm">
+
+        <form>
+            <div class="mb-5">
+                <label for="desktopForm__inputProducto" class="form-label">Producto</label>
+                <input type="text" class="form-control" id="desktopForm__inputProducto" placeholder="Ingresa un producto">
+            </div>
+            
+            <select class="form-select mb-5" id="desktopForm__inputCategoria" aria-label="Default select example">
+                <option selected>Elegir producto</option>
+                <option value="frutas">FRUTAS</option>
+                <option value="verduras">VERDURAS</option>
+                <option value="carne">CARNE</option>
+                <option value="lacteos">LACTEOS</option>
+                <option value="conservas">CONSERVAS</option>
+                <option value="botiquin">BOTIQUIN</option>
+            </select>
+
+            <div class="mb-4">
+                <label for="desktopForm__inputDescripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="desktopForm__inputDescripcion" rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary" id="desktopForm__button">AGREGAR</button>
+        </form>
+
+    </section>
+
+    <section class="estadoInicial" id="estadoInicialVacio">
+        <div class="container">
+            <h1 id="estadoInicial__titulo">Lista de compras vacía</h1>
+            <div><img src="images/carritovacio.png" class="estadoInicial__imagen" alt=""></div>
+        </div>
+    </section>
+
+
+
+    <section class="listaProductos" id="listaDeProductos">
+        <ul class="list-group list-group-flush" id="listaProductos__ul">
+        </ul>
+    </section>
+
+    <section id="detallesProducto" class="detallesDeProductos">
+        <div class="container detallesDeProductos__contenedor">
+            <div id="detallesProducto__img"></div>
+            <div class="detallesProducto__contenedorTexto">
+                <h1 id="detallesProducto__titulo"></h1>
+                <p id="detallesProducto__descripcion"></p>
+            </div>
+            <button class="btn btn-info"  id="detallesProducto__volver">VOLVER</button>
+        </div>
+    </section>
+
+    <!-- Modal Pop-Up -->
+    <section id="modalSection">
+        <button type="button" class="btnAgregarProducto" id="btnAgregarProductoModal" data-bs-toggle="modal" data-bs-target="#modalAgregarProductos">+</button>    
+        
+            <div class="modal fade" id="modalAgregarProductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">AGREGAR PRODUCTO</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                            <form>
+                                <div class="input-group">
+                                    <span class="input-group-text">Producto</span>
+                                    <input type="text" aria-label="Tarea" class="form-control" id="inputTituloProducto" required/>
+                                </div>
+                                <br>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="inputCategoriaProducto">Categoria </label>
+                                    <select class="form-select" id="inputCategoriaProducto" required>
+                                        <option selected>Elegir producto</option>
+                                        <option value="frutas">FRUTAS</option>
+                                        <option value="verduras">VERDURAS</option>
+                                        <option value="carne">CARNE</option>
+                                        <option value="lacteos">LACTEOS</option>
+                                        <option value="conservas">CONSERVAS</option>
+                                        <option value="botiquin">BOTIQUIN</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text">Descripcion</span>
+                                    <textarea class="form-control" aria-label="With textarea" id="inputDescripcionProducto"></textarea>
+                                </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                    <!-- Boton para agregar producto a la lista-->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnModalCerrar">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnModalAgregar">Agregar producto</button>
+                    
+                </div>
+                </div>
+                </div>
+            </div>
+    </section>
+
+    <footer>
+        
+    </footer>
+        <!-- JavaScript Bundle with Popper -->
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <script src="main.js"></script> 
+</body>
+</html>
